@@ -1,0 +1,28 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    int input = 0;
+    ifstream in;
+
+    // Open the file "data3.txt" for reading
+    in.open("data3.txt");
+
+    // Check if the file was successfully opened
+    if (!in.is_open()) {
+        cout << "Failed to open file." << endl;
+        return 1; // Return an error code
+    }
+
+    // Read and print 5 integers from the file
+    for (int i = 0; i < 5; i++) {
+        in >> input; // Read an integer from the file
+        cout << "The input is: " << input << endl; // Print the integer
+    }
+
+    // Close the file
+    in.close();
+
+    return 0; // Return 0 to indicate success
+}
