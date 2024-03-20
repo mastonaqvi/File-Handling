@@ -1,0 +1,28 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+int main(){
+    //string of ="Muhammad Raza Naqvi ";
+    //ofstream out("data1.txt");
+    //out<<of;
+    
+   
+    ofstream out("data1.txt");
+    string name;
+    cout<<"Enter Name: ";
+    cin>>name;
+    out<<name;
+    
+    
+
+    out.close();
+
+    ifstream in("data1.txt");
+    string contant;
+    //in>>contant;
+    getline(in,contant);
+    cout<<"Contant is "<<contant;
+    in.close();
+
+    return 0;
+}
