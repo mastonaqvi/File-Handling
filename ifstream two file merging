@@ -1,0 +1,55 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    ifstream in;
+    int count=0;
+    in.open("data3.txt");
+    int input;
+    while(in>>input){
+        count++;
+    }
+   
+    int array[count];
+    in.close();
+
+    in.open("data3.txt");
+    for(int l=0; l<count;l++){
+        in>>array[l];
+    }
+    in.close();
+
+    int count2=0;
+    in.open("data4.txt");
+    while(in>>input){
+        count2++;
+    }
+   
+    int array1[count2];
+    in.close();
+
+    in.open("data4.txt");
+    for(int m=0; m<count2;m++){
+        in>>array1[m];
+    }
+    in.close();
+
+    int mergedSize = count + count2;
+    int mergedArray[mergedSize];
+
+    for(int i=0; i<count; i++){
+        mergedArray[i] = array[i];
+    }
+    for(int j=0; j<count2; j++){
+        mergedArray[count + j] = array1[j];
+    }
+
+    cout << "Merged Array: ";
+    for(int k=0; k<mergedSize; k++){
+        cout << mergedArray[k] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
