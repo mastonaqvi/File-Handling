@@ -1,0 +1,35 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+int main(){
+    int input=0;
+    ifstream in;
+    in.open("task3.txt");
+    char name[50]= {};
+    int marks1 =0 ,marks2 =0 ,marks3 = 0;
+    while(!in.eof())
+    { 
+    //in>>input;
+    
+     in.getline(name, 50, ' ');
+     if (0<marks1 && marks1<49.5){
+        cout<<"F Grade ";
+     }else if(49.5<marks1 && marks1<57.5){
+        cout<<"D Grade ";
+     }else if(57.5<marks1 && marks1<71.5){
+        cout<<"C Grade ";
+     }else if(71.5<marks1 && marks1<=84.5){
+        cout<<"B Grade ";
+     }else{
+        cout<<"A Grade";
+     }
+
+     in>>marks1;
+    cout<<name<<" Obtained "<<marks1<<" "; 
+    }
+    
+    in.close();
+    return 0;
+
+}
+
