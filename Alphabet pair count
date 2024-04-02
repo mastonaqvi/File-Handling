@@ -1,0 +1,23 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+int main(){
+    int input=0;
+    ifstream in;
+    in.open("task4.txt");
+   ;
+    char alpha[100]={0};
+    while(!in.eof()){
+    in.getline(alpha, 100, ' ');
+    if("a">alpha && alpha<"z" && "A">alpha && alpha<"Z"){
+        
+         in>>input;
+        
+    }
+
+
+     cout<<input;
+    }
+    in.close();
+    return 0;
+}
