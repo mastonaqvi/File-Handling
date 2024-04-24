@@ -1,0 +1,45 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+int main(){
+    ifstream in;
+    in.open("data.txt");
+    char name[50]="ALLISON GRAY";
+    cin>>name;
+    char input[50]={};
+    bool match = true;
+    int i=0;
+    if (in)
+    {
+        while(!in.eof()){
+            in.getline(input,50);
+            match = true;
+            i=0;
+            cout<< input <<endl;
+            while(true){
+                if(name[i]!= input[i]){
+                    match =false ;
+                    break;
+                }
+                i++;
+                if(name[i]== '\0' && input[i]=='\0'){
+                    break;
+                }
+            }
+
+            if(match)
+            cout<<"The cString match"<<endl;
+            break;
+        }
+        if(!match){
+            cout<<"The Value don not match"<<endl;
+        }
+    }
+    else{
+        cout<<"The File is not exist"<<endl; 
+    }
+    in.close();
+
+    return 0;
+
+}
