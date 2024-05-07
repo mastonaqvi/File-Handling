@@ -1,0 +1,84 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+int main(){
+    ifstream in;
+    in.open("data4.txt");
+    ofstream out;
+    out.open("dataout4.txt");
+    if(in){
+        int sr_no=0;
+        int input_sr_no=0;
+        char name[50]={};
+        char phone_no[30]={};
+        char temp[50]={};
+        in.getline(temp,50);
+        cout<<temp<<endl;
+        out<<temp<<endl;
+        bool entry=false;
+
+        cout<<"Enter sr no: ";
+        cin>>input_sr_no;
+
+        while(!in.eof()){
+            in>>sr_no;
+            in.ignore();
+            in.getline(name,50,',');
+            in.getline(phone_no,50);
+
+            if(entry == false)
+
+            cout<<sr_no<<","<<name<<","<<phone_no<<endl;
+            out<<sr_no<<","<<name<<","<<phone_no<<endl;
+            if(entry == true)
+            cout<<sr_no+1<<","<<name<<","<<phone_no<<endl;
+            out<<sr_no+1<<","<<name<<","<<phone_no<<endl;
+
+
+            if(sr_no == input_sr_no){
+               char name_input[50]={};
+               cout<<"Enter Name you Want tu insert at line No "<<sr_no<<": ";
+               cin.ignore();
+               cin.getline(name_input,50);
+
+               char phone_input[50]={};
+               cout<<"Enter Phone No you Want tu insert at line No "<<sr_no<<": ";
+               cin.getline(phone_input,50);
+
+               cout<<sr_no+1<<","<<name_input<<","<<phone_input<<endl;
+               out<<sr_no+1<<","<<name_input<<","<<phone_input<<endl;
+               
+               entry=true;
+
+
+            }
+
+
+        }
+        in.close();
+        out.close();
+        // in.open("data4.txt");
+        // out.open("datout4.txt");
+
+        // in.getline(temp,50);
+        // out<<temp;
+        // while(!in.eof()){
+        //      in>>sr_no;
+        //     in.ignore();
+        //     in.getline(name,50,',');
+        //     in.getline(phone_no,50);
+        //     cout<<sr_no<<","<<name<<","<<phone_no<<endl;
+        //     out<<sr_no<<","<<name<<","<<phone_no<<endl;
+            
+            
+ 
+        // }
+
+         
+
+    }else{
+        cout<<"File Does Not Open ";
+    }
+
+    return 0;
+}
