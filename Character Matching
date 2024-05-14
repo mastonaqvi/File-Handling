@@ -1,0 +1,70 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main() 
+{
+    int inputFile = "data4.txt";
+    int outputFile = "outdata4.txt";
+    char word1[100], word2[100];
+    int matchCount = 0;
+
+    ifstream inFile(inputFile);
+    if (inFile.is_open()) {
+        int i = 0;
+        char ch;
+        while (inFile.get(ch) && i < sizeof(word1) - 1) {
+            word1[i++] = ch;
+        }
+        word1[i] = '\0'; 
+
+        if (inFile.get(ch)) { 
+            if (ch != ' ') {
+                cerr << "Error: Words must be separated by a space." << endl;
+                return 1;
+            }
+        }
+        else {
+            cerr << "Error: File may not contain two words." << endl;
+            return 1;
+        }
+
+        i = 0;
+        while (inFile.get(ch) && i < sizeof(word2) - 1) {
+            word2[i++] = ch;
+        }
+        word2[i] = '\0'; 
+        inFile.close();
+    }
+    else {
+        cout << "Error opening file: " << inputFile << endl;
+        return 1;
+    }
+
+    ofstream outFile(outputFile);
+    if (outFile.is_open()) {
+        for (int i = 0; i < strlen(word1); ++i) {
+            if (word1[i] == word2[i]) {
+                outFile << word1[i];
+                outFile << i + 1 << " "; 
+                matchCount++;
+            }
+        }
+    }
+    else {
+        cout << "Error opening file: " << outputFile << endl;
+        return 1;
+    }
+
+    outFile.close();
+
+    if (matchCount == 0) {
+        cout << "No matching characters found." << endl;
+    }
+    else {
+        cout << matchCount << " matching characters found. Check " << outputFile << " for details." << endl;
+    }
+
+    return 0;
+}
