@@ -1,0 +1,30 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    int inputFile = "data2.txt";
+    int sentenceCount = 0;
+    char ch;
+
+   
+    ifstream inFile(inputFile);
+    if (!inFile.is_open()) {
+        cerr << "Error opening file: " << inputFile << endl;
+        return 1;
+    }
+    while (inFile.get(ch)) {
+        
+        if (ch == '.' || ch == '?' || ch == '!') {
+            if (inFile.peek() == ' ' || inFile.peek() == '\t' || inFile.peek() == '\n' || inFile.eof()) {
+                sentenceCount++;
+            }
+        }
+    }
+
+    inFile.close();
+
+    cout << "Total Sentences: " << sentenceCount << endl;
+
+    return 0;
+}
