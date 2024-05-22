@@ -1,0 +1,69 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+void swap(int& a, int& b) {
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+void bubbleSort(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                swap(arr[j], arr[j + 1]);
+            }
+        }
+    }
+}
+int main() {
+   
+    ifstream inputFile("data1.txt");
+    if (!inputFile.is_open()) {
+       cout << "Error opening file\n";
+        return 1;
+    }
+    int size = 10;
+    int numbers[size];
+    for (int i = 0; i < size; i++) {
+        inputFile >> numbers[i];
+    }
+    inputFile.close();
+    int mid = size / 2;
+
+    bubbleSort(numbers, mid);
+    bubbleSort(numbers + mid, size - mid);
+
+    int sortedNumbers[size];
+    int i = 0, j = mid, k = 0;
+    while (i < mid && j < size) {
+        if (numbers[i] < numbers[j]) {
+            sortedNumbers[k++] = numbers[i++];
+        }
+        else {
+            sortedNumbers[k++] = numbers[j++];
+        }
+    }
+    while (i < mid) {
+        sortedNumbers[k++] = numbers[i++];
+    }
+    while (j < size) {
+        sortedNumbers[k++] = numbers[j++];
+    }
+
+    
+    ofstream outputFile("Outdata1.txt");
+    if (!outputFile.is_open()) {
+        cout<< "Error opening file\n";
+        return 1;
+    }
+    for (int i = 0; i < size; i++) {
+        outputFile << sortedNumbers[i] << " ";
+    }
+    outputFile.close();
+
+    cout << "Output written to Output.txt\n";
+
+    return 0;
+}
