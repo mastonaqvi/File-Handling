@@ -9,7 +9,7 @@ int main(){
    
     ofstream out("data1.txt");
     string name;
-    cout<<"Enter Name: ";
+    cout<<"Enter String Name: ";
     cin>>name;
     out<<name;
     
