@@ -6,7 +6,7 @@ int main() {
     int input = 0;
     ifstream in;
 
-    // Open the file "data3.txt" for reading
+    // Open the file "Data3.txt" for reading
     in.open("data3.txt");
 
     // Check if the file was successfully opened
