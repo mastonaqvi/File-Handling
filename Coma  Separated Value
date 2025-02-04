@@ -28,7 +28,7 @@ int main(){
             }
 
             if(match)
-            cout<<"The cString match"<<endl;
+            cout<<"The String Match"<<endl;
             break;
         }
         if(!match){
